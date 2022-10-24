@@ -34,21 +34,27 @@ repository.create(new_student) # Creates a new student by performing a INSERT qu
 
 # STEPS
 # 1.  Create the TEST SQL Seeds
+#     - write the sql seeds in recipe
+#     - create seed SQL file in SPEC folder and update with seeds from recipe
 #     - updated the seed file with data
-#     - created a test database
-#     - update test database with data from prod db using 
-#       - psql -h 127.0.0.1 your_database_name < seeds_{table_name}.sql
-#       - check to see if db exists by SELECT * FROM artists
+
 
 # 2. Insert seeds into the test db
+#     - create a test database (may need to create)
+#         - CREATE DATABASE music_library_test;
+#         - add DatabaseConnection.connect('music_library_test') to top of your spec_helper file!
+#     - update test database with data from prod db using 
+#       - psql -h 127.0.0.1 your_database_name < seeds_{table_name}.sql
 #     - psql -h 127.0.0.1 music_library_test < spec/seeds_artists.sql
 #     - resets the table and inserts our new data in
+#       - check to see if db exists by SELECT * FROM artists
+
 
 # 3. Define the Class names
 #     - just renamed the template classes and table name
 
 # 4. Implement the Model class
-#     - created the artist.rb file for the class
+#     - created the artist.rb file for the MODEL class
 #     - copied over the class structure from recipe
 #     - renamed to Artist class and updated the attributes to match columns in db
 

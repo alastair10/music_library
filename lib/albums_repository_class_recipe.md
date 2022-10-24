@@ -1,6 +1,4 @@
-# {{TABLE NAME}} Model and Repository Classes Design Recipe
-
-_Copy this recipe template to design and implement Model and Repository classes for a database table._
+# ALBUMS Model and Repository Classes Design Recipe
 
 ## 1. Design and create the Table
 
@@ -35,13 +33,13 @@ If seed data is provided (or you already created it), you can skip this step.
 -- so we can start with a fresh state.
 -- (RESTART IDENTITY resets the primary key)
 
-TRUNCATE TABLE students RESTART IDENTITY; -- replace with your own table name.
+TRUNCATE TABLE albums RESTART IDENTITY; -- replace with your own table name.
 
 -- Below this line there should only be `INSERT` statements.
 -- Replace these statements with your own seed data.
 
-INSERT INTO students (name, cohort_name) VALUES ('David', 'April 2022');
-INSERT INTO students (name, cohort_name) VALUES ('Anna', 'May 2022');
+INSERT INTO albums (title, release_year, artist_id) VALUES ('Dookie', '1995', 3);
+INSERT INTO albums (title, release_year, artist_id) VALUES ('Dude Ranch', '1997', 2);
 ```
 
 Run this SQL file on the database to truncate (empty) the table, and insert the seed data. Be mindful of the fact any existing records in the table will be deleted.
@@ -56,16 +54,16 @@ Usually, the Model class name will be the capitalised table name (single instead
 
 ```ruby
 # EXAMPLE
-# Table name: artists
+# Table name: albums
 
 # Model class
 # (in lib/student.rb)
-class Artist
+class Albums
 end
 
 # Repository class
 # (in lib/student_repository.rb)
-class ArtistRepository
+class AlbumRepository
 end
 ```
 
@@ -80,7 +78,7 @@ Define the attributes of your Model class. You can usually map the table columns
 # Model class
 # (in lib/student.rb)
 
-class Artist
+class Albums
 
   # Replace the attributes by your own columns.
   attr_accessor :id, :name, :cohort_name
@@ -105,20 +103,20 @@ Using comments, define the method signatures (arguments and return value) and wh
 
 ```ruby
 # EXAMPLE
-# Table name: artists
+# Table name: students
 
 # Repository class
 # (in lib/student_repository.rb)
 
-class ArtistRepository
+class AlbumsRepository
 
   # Selecting all records
   # No arguments
   def all
     # Executes the SQL query:
-    # SELECT id, name, genre FROM artists;
+    # SELECT id, name, cohort_name FROM students;
 
-    # Returns an array of Artist objects.
+    # Returns an array of Student objects.
   end
 
   # Gets a single record by its ID
@@ -153,51 +151,35 @@ These examples will later be encoded as RSpec tests.
 # EXAMPLES
 
 # 1
-# Get all artists
+# Get all students
 
-repo = ArtistRepository.new
+repo = StudentRepository.new
 
-artists = repo.all
-artists.length # => 2
-artists.first.id # => 1
-artists.find.name # => 'Pixies'
+students = repo.all
 
-# Given new object of Artists Repo calss
-# If I call the all method
-# I should get an array 
-# of length 2
-# first id should be 1
-# name should include Pixies
+students.length # =>  2
 
+students[0].id # =>  1
+students[0].name # =>  'David'
+students[0].cohort_name # =>  'April 2022'
 
+students[1].id # =>  2
+students[1].name # =>  'Anna'
+students[1].cohort_name # =>  'May 2022'
 
-# Below was from example, not used in this case
+# 2
+# Get a single student
 
-# students = repo.all
+repo = StudentRepository.new
 
-# students.length # =>  2
+student = repo.find(1)
 
-# students[0].id # =>  1
-# students[0].name # =>  'David'
-# students[0].cohort_name # =>  'April 2022'
+student.id # =>  1
+student.name # =>  'David'
+student.cohort_name # =>  'April 2022'
 
-# students[1].id # =>  2
-# students[1].name # =>  'Anna'
-# students[1].cohort_name # =>  'May 2022'
-
-# # 2
-# # Get a single student
-
-# repo = StudentRepository.new
-
-# student = repo.find(1)
-
-# student.id # =>  1
-# student.name # =>  'David'
-# student.cohort_name # =>  'April 2022'
-
-# # Add more examples for each method
-# ```
+# Add more examples for each method
+```
 
 Encode this example as a test.
 
@@ -230,3 +212,4 @@ end
 ## 8. Test-drive and implement the Repository class behaviour
 
 _After each test you write, follow the test-driving process of red, green, refactor to implement the behaviour._
+
