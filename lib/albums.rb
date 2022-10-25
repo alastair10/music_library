@@ -14,4 +14,3 @@ end
 # student = Student.new
 # student.name = 'Jo'
 # student.name
-```

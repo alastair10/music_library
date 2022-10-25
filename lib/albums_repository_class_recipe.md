@@ -121,12 +121,12 @@ class AlbumsRepository
 
   # Gets a single record by its ID
   # One argument: the id (number)
-  def find(id)
+  #def find(id)
     # Executes the SQL query:
     # SELECT id, name, cohort_name FROM students WHERE id = $1;
 
     # Returns a single Student object.
-  end
+  #end
 
   # Add more methods below for each operation you'd like to implement.
 
@@ -151,34 +151,16 @@ These examples will later be encoded as RSpec tests.
 # EXAMPLES
 
 # 1
-# Get all students
+# Get all albums
 
-repo = StudentRepository.new
+repo = AlbumsRepository.new
 
-students = repo.all
+albums = repo.all
+albums.length # =>2
+albums.first.id # =>1
+albums.find.name # => 'Dude Ranch'
 
-students.length # =>  2
 
-students[0].id # =>  1
-students[0].name # =>  'David'
-students[0].cohort_name # =>  'April 2022'
-
-students[1].id # =>  2
-students[1].name # =>  'Anna'
-students[1].cohort_name # =>  'May 2022'
-
-# 2
-# Get a single student
-
-repo = StudentRepository.new
-
-student = repo.find(1)
-
-student.id # =>  1
-student.name # =>  'David'
-student.cohort_name # =>  'April 2022'
-
-# Add more examples for each method
 ```
 
 Encode this example as a test.
