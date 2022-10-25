@@ -22,18 +22,9 @@ albums_repository.all.each do |album|
   p album
 end
 
+# using the code below to check after implementing the find method 
+artist = artist_repository.find(1)
+puts artist.name # => 'Pixies'
 
-# started with the below code until rspec test passes.  Replaced with the above two lines
-
-=begin
-
-# Perform a SQL query on the database and get the result set.
-sql = 'SELECT id, name, genre FROM artists;'
-result = DatabaseConnection.exec_params(sql, [])
-
-# Print out each record from the result set .
-result.each do |record|
-  p record
-end
-
-=end
+artist = artist_repository.find(2)
+puts artist.name # => 'ABBA'

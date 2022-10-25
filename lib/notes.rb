@@ -81,3 +81,32 @@ repository.create(new_student) # Creates a new student by performing a INSERT qu
 #     - add another .each method that puts the result set
 #     - run the app.rb file to see if you get a full db result set
 
+
+
+# FIND METHOD IMPLEMENTATION
+
+# starting state: we have models and classes for Albums and Artists
+
+# we need to update recipe Step 5
+    - update the find method
+        def find(id)
+            # Executes the SQL query:
+            # SELECT id, name, cohort_name FROM artists WHERE id = $1;
+        
+            # Returns a single Artist object.
+        end
+# Update Step 6 in the recipe
+    - new test example
+
+# Update RSPEC test with the examples
+
+    it "returns the Pixies as a single artist" do
+        repo = ArtistRepository.new
+
+        artist = repo.find(1)
+        expect(artist.name).to eq('Pixies')
+        expect(artist.genre).to eq('Rock')
+    end
+
+# follow TDD process and run rspec
+    - need to define method in artist repo file

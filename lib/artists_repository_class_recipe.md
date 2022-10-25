@@ -123,9 +123,9 @@ class ArtistRepository
   # One argument: the id (number)
   def find(id)
     # Executes the SQL query:
-    # SELECT id, name, cohort_name FROM students WHERE id = $1;
+    # SELECT id, name, genre FROM artists WHERE id = $1;
 
-    # Returns a single Student object.
+    # Returns a single Artist object.
   end
 
   # Add more methods below for each operation you'd like to implement.
@@ -184,16 +184,22 @@ artists.find.name # => 'Pixies'
 # students[1].cohort_name # =>  'May 2022'
 
 # # 2
-# # Get a single student
+# # Get a single artist
 
-# repo = StudentRepository.new
+ repo = StudentRepository.new
 
-# student = repo.find(1)
+ artist = repo.find(1)
+ artist.name # => 'Pixies'
+ artist.genre # => 'Rock'
 
-# student.id # =>  1
-# student.name # =>  'David'
-# student.cohort_name # =>  'April 2022'
+# # 3
+# # Get another single artist
 
+ repo = StudentRepository.new
+
+ artist = repo.find(2)
+ artist.name # => 'Blink-182'
+ artist.genre # => 'Alternative'
 # # Add more examples for each method
 # ```
 

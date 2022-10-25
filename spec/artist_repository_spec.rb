@@ -23,4 +23,22 @@ describe ArtistRepository do
     expect(artists.first.id).to eq('1')
     expect(artists.first.name).to eq ('Pixies')
   end
+
+  it "returns the Pixies as a single artist" do
+    repo = ArtistRepository.new
+
+    artist = repo.find(1)
+    expect(artist.name).to eq('Pixies')
+    expect(artist.genre).to eq('Rock')
+  end
+
+  it "returns Blink-182 as another single artist" do
+    repo = ArtistRepository.new
+  
+    artist = repo.find(2)
+    expect(artist.name).to eq('Blink-182')
+    expect(artist.genre).to eq('Alternative')
+  end
+
+
 end
