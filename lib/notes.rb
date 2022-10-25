@@ -43,6 +43,7 @@ repository.create(new_student) # Creates a new student by performing a INSERT qu
 #     - create a test database (may need to create)
 #         - CREATE DATABASE music_library_test;
 #         - add DatabaseConnection.connect('music_library_test') to top of your spec_helper file!
+#     - if creating a Test DB from scratch, you will need to create the structure by first inserting the PROD db and THEN the seed!
 #     - update test database with data from prod db using 
 #       - psql -h 127.0.0.1 your_database_name < seeds_{table_name}.sql
 #     - psql -h 127.0.0.1 music_library_test < spec/seeds_artists.sql
