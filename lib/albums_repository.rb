@@ -1,4 +1,4 @@
-require 'albums'
+require_relative './albums'
 
 class AlbumsRepository
 

@@ -154,11 +154,21 @@ These examples will later be encoded as RSpec tests.
 # Get all albums
 
 repo = AlbumsRepository.new
-
 albums = repo.all
+
 albums.length # =>2
-albums.first.id # =>1
-albums.find.name # => 'Dude Ranch'
+albums.first.release_year # => 1995
+albums.find.title # => 'Dookie'
+
+
+
+# 2
+# Get all albums when there are no albums in the DB
+
+repo = AlbumsRepository.new
+albums = repo.all # => []
+# to do this you would need to create a new seed file that only empties the table
+# then run that example here in this code.
 
 
 ```

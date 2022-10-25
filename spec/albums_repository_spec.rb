@@ -20,7 +20,7 @@ describe AlbumsRepository do
     
     albums = repo.all
     expect(albums.length).to eq(2)
-    expect(albums.first.id).to eq('1')
-    expect(albums.first.title``).to eq('Dookie')
+    expect(albums.first.release_year).to eq('1995')
+    expect(albums.first.title).to eq('Dookie')
   end
 end

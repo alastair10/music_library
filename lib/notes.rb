@@ -36,8 +36,8 @@ repository.create(new_student) # Creates a new student by performing a INSERT qu
 # 1.  Create the TEST SQL Seeds
 #     - write the sql seeds in recipe
 #     - create seed SQL file in SPEC folder and update with seeds from recipe
-#     - updated the seed file with data
-
+#     - update the seed file with data 
+#     - good practice to test the SQL code in your TEST DATABASE to confirm it actually works
 
 # 2. Insert seeds into the test db
 #     - create a test database (may need to create)
@@ -75,4 +75,8 @@ repository.create(new_student) # Creates a new student by performing a INSERT qu
 #       - will then need to add the other methods 
 
 # 8. Go in and change the app.rb file
-# 
+#     - add the new class by creating new object for the new class
+#       - album_repository = AlbumsRepository.new
+#     - add another .each method that puts the result set
+#     - run the app.rb file to see if you get a full db result set
+
