@@ -130,8 +130,9 @@ class AlbumsRepository
 
   # Add more methods below for each operation you'd like to implement.
 
-  # def create(student)
-  # end
+  def create(album)
+    # INSERT INTO albums (title, release_year, artist_id) VALUES ($1, $2, $3);
+  end
 
   # def update(student)
   # end
@@ -170,7 +171,25 @@ albums = repo.all # => []
 # to do this you would need to create a new seed file that only empties the table
 # then run that example here in this code.
 
+# 3  CREATE TEST
+  # create a new album 
+  repo = AlbumsRepository.new
 
+  album = Albums.new
+  album.title = 'Pet Sounds'
+  album.release_year = '1966'
+  album.artist_id = '6'
+
+    # creates the album
+  repo.create(album) # => returns nil
+
+    # verify this is working by calling all albums...
+  albums = repo.all
+    # and seeing the newly inserted one is present at the end of the db
+  last_album = albums.last
+  last_album.name # => 'Pet Sounds'
+  last_album.release_year # => '1966'
+  last_album.artist_id # => '6'
 ```
 
 Encode this example as a test.

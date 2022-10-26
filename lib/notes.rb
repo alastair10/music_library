@@ -122,7 +122,8 @@ Start at step 5 in the recipe
     -design the methods 
 
 Step 6 is to think of test examples
-    - start with one test for one method (create) and then make spec test out of it!
+    - start with one test for one method (create)
+    - make spec test out of it
     - TDD it
         - create the method in the repo.rb file
         - once passing, go back to recipe and write another test
