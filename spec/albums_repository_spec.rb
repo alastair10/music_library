@@ -20,7 +20,7 @@ describe AlbumsRepository do
     
     albums = repo.all
     expect(albums.length).to eq(2)
-    expect(albums.first.release_year).to eq('1995')
+    expect(albums.first.release_year).to eq(1995)
     expect(albums.first.title).to eq('Dookie')
   end
 
@@ -29,8 +29,8 @@ describe AlbumsRepository do
 
     new_album = Albums.new
     new_album.title = 'Pet Sounds'
-    new_album.release_year = '1966'
-    new_album.artist_id = '6'
+    new_album.release_year = 1966
+    new_album.artist_id = 6
   
       # creates the album
     repo.create(new_album) # => returns nil
@@ -41,8 +41,11 @@ describe AlbumsRepository do
     last_album = albums.last
     
     expect(last_album.title).to eq('Pet Sounds')
-    expect(last_album.release_year).to eq('1966')
-    expect(last_album.artist_id).to eq('6')
+    expect(last_album.release_year).to eq(1966)
+    expect(last_album.artist_id).to eq(6)
+
+    expect(albums).to include(have_attributes(title: new_album.title, release_year: 1966, artist_id: 6)
+    )
   end
 
 end
