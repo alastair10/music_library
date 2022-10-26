@@ -130,14 +130,33 @@ class ArtistRepository
 
   # Add more methods below for each operation you'd like to implement.
 
-  # def create(student)
-  # end
+  # insert a new artist
+  # takes an Artist object as argument
+  def create(artist)
+    # execute SQL query
+    # INSERT INTO artists (name, genre) VALUES ($1, $2);
 
-  # def update(student)
-  # end
+    # Doesn't need to return anything b/c it's only creating
+  end  
+  
+  # deletes an artist record
+  # given an id
+  def delete(id)
+    # executes SQL code
+    # DELETE FROM artists WHERE id = $1;
 
-  # def delete(student)
-  # end
+    # Returns nothing, only delets
+  end
+
+  # updates an artist record
+  # takes an artist object (with the updated field)
+  def update(artist)
+    # executes SQL code
+    # UPDATE artists SET name = $1, genre = $2 WHERE id = $3;
+
+    ## Returns nothing (only updates the record)
+  end
+
 end
 ```
 
@@ -158,35 +177,12 @@ repo = ArtistRepository.new
 artists = repo.all
 artists.length # => 2
 artists.first.id # => 1
-artists.find.name # => 'Pixies'
-
-# Given new object of Artists Repo calss
-# If I call the all method
-# I should get an array 
-# of length 2
-# first id should be 1
-# name should include Pixies
-
-
-
-# Below was from example, not used in this case
-
-# students = repo.all
-
-# students.length # =>  2
-
-# students[0].id # =>  1
-# students[0].name # =>  'David'
-# students[0].cohort_name # =>  'April 2022'
-
-# students[1].id # =>  2
-# students[1].name # =>  'Anna'
-# students[1].cohort_name # =>  'May 2022'
+artists.first.name # => 'Pixies'
 
 # # 2
 # # Get a single artist
 
- repo = StudentRepository.new
+ repo = ArtistRepository.new
 
  artist = repo.find(1)
  artist.name # => 'Pixies'
@@ -195,13 +191,62 @@ artists.find.name # => 'Pixies'
 # # 3
 # # Get another single artist
 
- repo = StudentRepository.new
+ repo = ArtistRepository.new
 
  artist = repo.find(2)
  artist.name # => 'Blink-182'
  artist.genre # => 'Alternative'
 # # Add more examples for each method
-# ```
+
+# 4  CREATE TEST
+  # create a new artist 
+  repo = ArtistRepository.new
+
+  artist = Artist.new
+  artist.name = 'Beatles'
+  artist.genre = 'Pop'
+
+    # creates the artist
+  repo.create(artist) # => returns nil
+
+    # verify this is working by calling all artists...
+  artists = repo.all
+    # and seeing the newly inserted one is present at the end of the db
+  last_artist = artists.last
+  last_artist.name # => 'Beatles'
+  last.artist.genre # => 'Pop'
+
+#5  DELETE TEST
+  # create a new artist 
+  repo = ArtistRepository.new
+
+  id_to_delete = 1
+
+  repo.delete(id_to_delete)
+
+  #now there should only be 1 artist (with id = 2) left after the deletion
+  all_artists = repo.all
+  all_artists.length # => 1
+  all_artists.first.id # => '2'
+
+# 6 UPDATE TEST
+  repo = ArtistRepository.new
+
+  artist = repo.find(1)
+
+  artist.name = 'Something else'
+  artists.genre = 'Disco'
+
+  repo.update(artist)
+
+  # now need to verify the update happened
+  updated_artist = repo.find(1)
+
+  updated_artist.name # => 'Something else'
+  udpated_artist.genre # => 'Disco'
+   
+
+
 
 Encode this example as a test.
 

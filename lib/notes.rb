@@ -33,13 +33,17 @@ repository.create(new_student) # Creates a new student by performing a INSERT qu
 
 
 # STEPS
+#       Create tables
+#           - use table recipe
+#           - run SQL code in both test and prod dbs
+
 # 1.  Create the TEST SQL Seeds
 #     - write the sql seeds in recipe
-#     - create seed SQL file in SPEC folder and update with seeds from recipe
+#     - create seed SQL file in SPEC folder and update with seeds from recipe 
 #     - update the seed file with data 
 #     - good practice to test the SQL code in your TEST DATABASE to confirm it actually works
 
-# 2. Insert seeds into the test db
+ 2. Insert seeds into the test db
 #     - create a test database (may need to create)
 #         - CREATE DATABASE music_library_test;
 #         - add DatabaseConnection.connect('music_library_test') to top of your spec_helper file!
@@ -51,15 +55,15 @@ repository.create(new_student) # Creates a new student by performing a INSERT qu
 #       - check to see if db exists by SELECT * FROM artists
 
 
-# 3. Define the Class names
+ 3. Define the Class names
 #     - just renamed the template classes and table name
 
-# 4. Implement the Model class
+ 4. Implement the Model class
 #     - created the artist.rb file for the MODEL class
 #     - copied over the class structure from recipe
 #     - renamed to Artist class and updated the attributes to match columns in db
 
-# 5. Define the Repository class
+ 5. Define the Repository class
 #     - update recipe with All method, updating class names and attributes
 
 # 6. Write test examples
@@ -110,3 +114,15 @@ repository.create(new_student) # Creates a new student by performing a INSERT qu
 
 # follow TDD process and run rspec
     - need to define method in artist repo file
+
+
+
+
+Start at step 5 in the recipe
+    -design the methods 
+
+Step 6 is to think of test examples
+    - start with one test for one method (create) and then make spec test out of it!
+    - TDD it
+        - create the method in the repo.rb file
+        - once passing, go back to recipe and write another test
