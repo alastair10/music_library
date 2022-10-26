@@ -116,7 +116,7 @@ repository.create(new_student) # Creates a new student by performing a INSERT qu
     - need to define method in artist repo file
 
 
-
+TDD the write operations
 
 Start at step 5 in the recipe
     -design the methods 
