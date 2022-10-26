@@ -34,6 +34,4 @@ class AlbumsRepository
 
     return nil
   end
-
-
 end
