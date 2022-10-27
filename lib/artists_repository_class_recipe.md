@@ -203,8 +203,8 @@ artists.first.name # => 'Pixies'
   repo = ArtistRepository.new
 
   artist = Artist.new
-  artist.name = 'Beatles'
-  artist.genre = 'Pop'
+  artist.name = 'Beatles'`
+  artist.genre = 'Pop'`
 
     # creates the artist
   repo.create(artist) # => returns nil
