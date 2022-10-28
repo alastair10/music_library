@@ -121,6 +121,6 @@ describe ArtistRepository do
     artist = repo.find_with_albums(1)
     
     expect(artist.name).to eq('Pixies')
-    expect(artist.albums.length).to eq(3)
+    expect(artist.albums.length).to eq(1)
   end
 end

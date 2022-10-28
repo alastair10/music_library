@@ -74,7 +74,6 @@ class ArtistRepository
   end
 
   def find_with_albums(artist_id)
-    # executes SQL code
     sql = 'SELECT artists.id AS "id",
                   artists.name AS "name",
                   artists.genre AS "genre",
@@ -88,6 +87,7 @@ class ArtistRepository
     sql_params = [artist_id]
 
     result = DatabaseConnection.exec_params(sql, sql_params)
+    # binding.irb
 
     artist = Artist.new
     artist.id = result.first['id']
