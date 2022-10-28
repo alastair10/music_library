@@ -40,7 +40,7 @@ describe Application do
       expect(io).to receive(:puts).with("Enter your choice:")
       expect(io).to receive(:gets).and_return('2')
       expect(io).to receive(:puts).with("Here is the list of artists:")
-      expect(io).to receive(:puts).with("1 - Something else")
+      expect(io).to receive(:puts).with("1 - Pixies")
       expect(io).to receive(:puts).with("2 - Blink-182")
 
       database_name = 'music_library_test'

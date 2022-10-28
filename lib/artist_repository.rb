@@ -73,4 +73,37 @@ class ArtistRepository
     return nil  
   end
 
+  def find_with_albums(artist_id)
+    # executes SQL code
+    sql = 'SELECT artists.id AS "id",
+                  artists.name AS "name",
+                  artists.genre AS "genre",
+                  albums.id AS "album_id",
+                  albums.title AS "title",
+                  albums.release_year AS "release_year"
+          FROM artists
+          JOIN albums ON albums.artist_id = artists.id
+          WHERE artists.id = $1;'
+
+    sql_params = [artist_id]
+
+    result = DatabaseConnection.exec_params(sql, sql_params)
+
+    artist = Artist.new
+    artist.id = result.first['id']
+    artist.name = result.first['name']
+    artist.genre = result.first['genre']
+
+    result.each do |record|
+      album = Albums.new
+      album.id = record['album_id']
+      album.title = record['title']
+      album.release_year = record['release_year']
+
+      artist.albums << album
+    end
+
+    return artist
+  end
+
 end

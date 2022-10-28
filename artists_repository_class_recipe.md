@@ -27,7 +27,7 @@ If seed data is provided (or you already created it), you can skip this step.
 -- EXAMPLE
 -- (file: spec/seeds_{table_name}.sql)
 
--- Write your SQL seed here. 
+-- Write your SQL seed here.
 
 -- First, you'd need to truncate the table - this is so our table is emptied between each test run,
 -- so we can start with a fresh state.
@@ -137,8 +137,8 @@ class ArtistRepository
     # INSERT INTO artists (name, genre) VALUES ($1, $2);
 
     # Doesn't need to return anything b/c it's only creating
-  end  
-  
+  end
+
   # deletes an artist record
   # given an id
   def delete(id)
@@ -156,6 +156,25 @@ class ArtistRepository
 
     ## Returns nothing (only updates the record)
   end
+
+  # selects artist record along with associated albums
+  #given the artist ID
+  def find_with_albums(id)
+    # executes SEL code
+    # SELECT albums.id AS "album_id",
+        # albums.title AS "title",
+        # artists.genre AS "genre",
+        # albums.release_year AS "release_year",
+        # artists.id AS "id",
+        # artists.name AS "name"
+        # FROM albums
+        # JOIN artists
+        # ON albums.artist_id = artists.id
+        # WHERE artists.id = $1;
+
+        # returns an artist object as array of album object
+  end
+
 
 end
 ```
@@ -199,7 +218,7 @@ artists.first.name # => 'Pixies'
 # # Add more examples for each method
 
 # 4  CREATE TEST
-  # create a new artist 
+  # create a new artist
   repo = ArtistRepository.new
 
   artist = Artist.new
@@ -217,7 +236,7 @@ artists.first.name # => 'Pixies'
   last.artist.genre # => 'Pop'
 
 #5  DELETE TEST
-  # create a new artist 
+  # create a new artist
   repo = ArtistRepository.new
 
   id_to_delete = 1
@@ -244,8 +263,21 @@ artists.first.name # => 'Pixies'
 
   updated_artist.name # => 'Something else'
   udpated_artist.genre # => 'Disco'
-   
 
+# FIND WITH method
+repo = ArtistRepository.new
+
+artist = repo.find_with_albums(1)
+
+# expect(artist.name).to eq 'Pixies'
+# expect(artist.genre).to eq 'Rock'
+# expect(artist.length).to eq 2
+# expect(artist.first.title).to eq 'Bossanova'
+
+artist.id # 1
+
+artist.albums # is an array of Album objects
+artist.albums.last.id # 12
 
 
 Encode this example as a test.
@@ -268,7 +300,7 @@ def reset_students_table
 end
 
 describe StudentRepository do
-  before(:each) do 
+  before(:each) do
     reset_students_table
   end
 
